@@ -18,7 +18,7 @@ class ScrapCotoProducts extends Command
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
         ])->post('https://www.cotodigital.com.ar/rest/model/atg/actors/cBackOfficeActor/getCategorias?pushSite=CotoDigital&_dynSessConf=4116455685428717426',
-            (object)[]   // Esto se codifica como {}
+            (object)[]
         );
 
         $data = $response->json();
@@ -52,9 +52,8 @@ class ScrapCotoProducts extends Command
                         'subCategoryName' => $subCategory['displayName'],
                     ];
 
-                    // Si tiene sub‑subcategorías, las metemos dentro de esta subcategoría
                     if (!empty($subCategory['subCategories2'])) {
-                        $subCategoryData['subCategories'] = []; // o 'children'
+                        $subCategoryData['subCategories'] = [];
                         foreach ($subCategory['subCategories2'] as $subSubCategory) {
                             $subCategoryData['subCategories'][] = [
                                 'subSubCategoryId'   => $subSubCategory['categoryId'],
@@ -63,7 +62,6 @@ class ScrapCotoProducts extends Command
                         }
                     }
 
-                    // Agregar la subcategoría una sola vez (con o sin hijos)
                     $forCategoryArray['subCategories'][] = $subCategoryData;
                 }
             }
