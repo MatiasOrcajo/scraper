@@ -10,7 +10,7 @@ class ProductService
 
     use ProductNormalizerTrait;
 
-    public function normalizeProductsNamesByGrams()
+    public function normalizeProductsNamesByGrams() : void
     {
         $products = Product::all();
         $gramsArray = ['g', 'g.', 'gr.', 'gr', 'grm', 'grm.', 'grs', 'grs.'];
