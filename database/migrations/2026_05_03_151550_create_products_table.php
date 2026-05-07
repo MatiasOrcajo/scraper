@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('brand');
-            $table->string('image_url');
-            $table->string('ean');
-            $table->char('measure', 2);
-            $table->unsignedInteger('quantity');
+            $table->string('sub_sub_category');
+            $table->string('sub_category');
+            $table->string('category');
+            $table->string('image_url')->nullable();
+            $table->string('ean')->nullable();
+            $table->char('measure', 2)->nullable();
+            $table->decimal('quantity', 8, 2)->nullable();
             $table->timestamps();
         });
     }
