@@ -7,15 +7,15 @@ use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 
-#[Signature('app:normalize-products-by-grams')]
+#[Signature('app:normalize-products-names')]
 #[Description('Command description')]
-class NormalizeProductsByGrams extends Command
+class NormalizeProductsNames extends Command
 {
     /**
      * Execute the console command.
      */
     public function handle(ProductService $productService)
     {
-        $productService->normalizeProductsNamesByGrams();
+        $productService->normalizeProductsNames();
     }
 }
